@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# NetBeans project folders
+/nbproject/
+/build/
+/dist/
+/doc/
