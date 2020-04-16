@@ -38,9 +38,29 @@ ActionInRecipe& ActionInRecipe::operator = ( const ActionInRecipe& other )
    if ( this != &other )
    {
       _description = other._description;
-      
+
       RecipeComponent::operator = ( other );
    }
 
    return *this;
+}
+
+bool ActionInRecipe::operator == ( const ActionInRecipe& other )
+{
+   bool toRet = true;
+
+   if ( this != &other )
+   {
+      if ( _description != other._description )
+      {
+         toRet = false;
+      }
+   }
+
+   return toRet;
+}
+
+bool ActionInRecipe::operator != ( const ActionInRecipe& other )
+{
+   return !this->operator== ( other );
 }

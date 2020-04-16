@@ -26,6 +26,9 @@ class Ingredient
       virtual ~Ingredient ( );
       Ingredient& setName ( const std::string& newName );
       std::string getName ( ) const;
+      
+      bool operator== ( const Ingredient& other );
+      bool operator!= ( const Ingredient& other );
 } ;
 
 #endif /* INGREDIENT_H */

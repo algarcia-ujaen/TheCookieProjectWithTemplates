@@ -71,5 +71,23 @@ IngredientInRecipe& IngredientInRecipe::operator= ( const IngredientInRecipe& ot
    return *this;
 }
 
+bool IngredientInRecipe::operator == ( const IngredientInRecipe& other )
+{
+   bool toRet = true;
+
+   if ( this != &other )
+   {
+      toRet = ( *_ingredient != *other._ingredient ) ? false : true;
+      toRet = ( _amount != other._amount ) ? false : true;
+   }
+
+   return toRet;
+}
+
+bool IngredientInRecipe::operator != ( const IngredientInRecipe& other )
+{
+   return !this->operator==( other );
+}
+
 
 

@@ -78,7 +78,7 @@ MyVector<T>& MyVector<T>::addElement (T& el)
       throw std::length_error ( "[MyVector::addElement]: no room" );
    }
 
-   myData[nData] = new T ( el );
+   myData[nData] = new T ( el );  // myData[nData] = new RecipeComponent ( el );
    nData++;
    
    return *this;

@@ -27,5 +27,14 @@ std::string Ingredient::getName ( ) const
 {  return _name;
 }
 
+bool Ingredient::operator == ( const Ingredient& other )
+{
+   return _name == other._name;
+}
+
+bool Ingredient::operator != ( const Ingredient& other )
+{
+   return !this->operator == (other);
+}
 
 
