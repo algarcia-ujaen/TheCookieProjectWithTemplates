@@ -20,6 +20,8 @@ class ActionInRecipe: public RecipeComponent
       ActionInRecipe& operator= ( const ActionInRecipe& other );
       bool operator== ( const ActionInRecipe& other );
       bool operator!= ( const ActionInRecipe& other );
+      
+      virtual RecipeComponent* copyMe () override;
 } ;
 
 #endif /* ACTIONINRECIPE_H */

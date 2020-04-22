@@ -64,3 +64,9 @@ bool ActionInRecipe::operator != ( const ActionInRecipe& other )
 {
    return !this->operator== ( other );
 }
+
+RecipeComponent* ActionInRecipe::copyMe ( )
+{
+   RecipeComponent* toRet = new ActionInRecipe (*this);
+   return toRet;
+}

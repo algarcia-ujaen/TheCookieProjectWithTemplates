@@ -20,6 +20,8 @@ class RecipeComponent
       RecipeComponent& operator= ( const RecipeComponent& other );
       bool operator== ( const RecipeComponent& other );
       bool operator!= ( const RecipeComponent& other );
+      
+      virtual RecipeComponent* copyMe () = 0;
 } ;
 
 #endif /* RECIPECOMPONENT_H */

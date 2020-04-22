@@ -19,6 +19,13 @@
 
 #define MAX_DATA 10
 
+/**
+ * @pre In order to use this template, the type T has to provide a
+ *      method named copyMe() that returns a pointer to a copy of
+ *      the object
+ * @pre In order to use this themplate, the type T has to provide
+ *      an implementation of the != operator
+ */
 template<typename T>
 class MyVector
 {
@@ -33,7 +40,7 @@ class MyVector
       bool operator== ( const MyVector& other );
       MyVector& operator= ( const MyVector& other );
       T& getElement ( int which );
-      T& operator[] ( int which );
+      T* operator[] ( int which );
       int getNData () const;
 };
 
@@ -51,7 +58,7 @@ MyVector<T>::MyVector ( const MyVector& orig ): nData ( orig.nData )
 {
    for ( int i = 0; i < nData; i++ )
    {
-      myData[i] = new T ( *orig.myData[i] );
+      myData[i] = orig.myData[i]->copyMe();
    }
 
    for ( int i = nData; i < MAX_DATA; i++ )
@@ -78,7 +85,7 @@ MyVector<T>& MyVector<T>::addElement (T& el)
       throw std::length_error ( "[MyVector::addElement]: no room" );
    }
 
-   myData[nData] = new T ( el );  // myData[nData] = new RecipeComponent ( el );
+   myData[nData] = el.copyMe ();
    nData++;
    
    return *this;
@@ -121,7 +128,7 @@ MyVector<T>& MyVector<T>::operator= ( const MyVector& other )
       nData = other.nData;
       for ( int i = 0; i < other.nData; i++ )
       {
-         myData[i] = new T ( *other.myData[i] );
+         myData[i] = other.myData[i]->copyMe ();
       }
    }
 
@@ -140,14 +147,14 @@ T& MyVector<T>::getElement ( int which )
 }
 
 template<typename T>
-T& MyVector<T>::operator [] ( int which )
+T* MyVector<T>::operator [] ( int which )
 {
    if ( ( 0 > which ) || ( which >= nData ) )
    {
       throw std::invalid_argument ( "wrong position!" );
    }
 
-   return *myData[which];
+   return myData[which];
 }
 
 

@@ -89,5 +89,10 @@ bool IngredientInRecipe::operator != ( const IngredientInRecipe& other )
    return !this->operator==( other );
 }
 
+RecipeComponent* IngredientInRecipe::copyMe ( )
+{
+   RecipeComponent* toRet = new IngredientInRecipe (*this);
+   return toRet;
+}
 
 

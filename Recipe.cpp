@@ -88,7 +88,7 @@ std::string Recipe::getAsText ( )
 
    for ( int i = 0; i < _components.getNData (); i++ )
    {
-      aux << _components[i].toText () << std::endl;
+      aux << _components[i]->toText () << std::endl;
    }
 
    return aux.str ();
